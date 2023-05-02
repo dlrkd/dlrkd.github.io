@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #000;
+}
+
+a,
+button,
+textarea,
+input {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #000;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+}
+
+button:focus,
+button:active,
+input:focus,
+input:active,
+textarea:focus,
+textarea:active {
+    outline: none;
+    box-shadow: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+ul,
+ol {
+    padding-left: 0;
+    list-style: none;
+}
+
+img {
+    display: block;
+}
+
+.white-button {
+    background-color: #FFFFFF;
+    border: 1px solid rgb(209,213,219);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25rem;
+    text-align: center;
+    text-decoration: none #D1D5DB solid;
+    text-decoration-thickness: auto;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.white-button:hover {
+    background-color: rgb(249,250,251);
+}
+
+.white-button:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+.white-button:focus-visible {
+    box-shadow: none;
+}
+
+.sr-only {
+    position: absolute;
+    z-index: -100;
+    width: 1px; /* width나 height 중에 하나라도 0으로 주면 display: none 처럼 스크린 리더가 읽어주지 않아서 1px로 설정 */
+    height: 1px;
+    overflow: hidden; /* 1x1을 벗어난 영역 자르기 */
+    opacity: 0; /* 투명도를 0으로 */
+}
+
+.no-drag {
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    user-select:none;
+}
+
+.color-red {
+    color: #F38181;
+}
+
+.color-blue {
+    color: #47B5FF;
+}
+
+.color-green {
+    color: #76BA99;
+}
+
+.bgChange {
+    animation: bgChangeEffect 400ms 2 alternate;
+}
+
+.blink {
+    animation: blinkingEffect 200ms 5 alternate;
+}
+
+.vibration {
+    animation: vibrationEffect 100ms infinite;
+}
+
+.zoom {
+    animation: zoomEffect 500ms 2 alternate;
+}
+
+@keyframes zoomEffect {
+    to {
+        font-size: 18px;
+        font-weight: 700;
+    }
+}
+
+@keyframes bgChangeEffect {
+    from {
+        background-color: #FFF;
+    }
+
+    to {
+        background-color: #DEA5A4;
+    }
+}
+
+@keyframes blinkingEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes movingEffect {
+    from {
+        top: 50%;
+    }
+
+    to {
+        top: 45%;
+    }
+}
+
+@keyframes vibrationEffect {
+    from {
+        left: 0;
+    }
+    
+    to {
+        left: 2px;
+    }
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+    @keyframes zoomEffect {
+        to {
+            font-size: 22px;
+        }
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) {
+}
