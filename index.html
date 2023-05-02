@@ -1,10 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="utf-8">
-<title>스타트업 프로젝트</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Game World</title>
+    <meta name="description" content="Vanilla JS를 이용한 Mini Game Project">
+    <link rel="icon" type="image/x-ico" href="./resources/favicon/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/common/styles.css">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <h1>마작 프로젝트</h1>
+    <div id="container" class="no-drag">
+        <header class="intro">
+            <h1 class="intro__title" lang="en" aria-label="게임 월드에 오신 걸 환영합니다."></h1>
+            <div class="intro__button" aria-hidden="true"></div>
+        </header>
+
+        <main id="game" aria-label="게임 목록">
+            <article class="game__wrapper" id="rock-paper-scissors">
+                <a class="game__overlay" href="./game-rps.html" aria-label="가위바위보 게임: 컴퓨터와 가위바위보 대결을 해보세요."></a>
+                <figure class="game__image"></figure>
+                <h1 class="game__title">
+                    가위바위보!
+                </h1>
+                <p class="game__desc">
+                    컴퓨터와 가위바위보 대결을 해보세요.
+                </p>
+            </article>
+
+            <article class="game__wrapper" id="find-different-color" aria-hidden="true">
+                <a class="game__overlay" href="./game-fdc.html" aria-label="다른 색깔 찾기 게임: 여러 개의 색 중 다른 색 하나를 찾아보세요."></a>
+                <figure class="game__image"></figure>
+                <h1 class="game__title" lang="en">
+                    다른 색깔 찾기
+                </h1>
+                <p class="game__desc" lang="en">
+                    당신의 색깔 찾기 능력은?<br/>
+                </p>
+            </article>
+
+            <article class="game__wrapper" id="card-matching" aria-hidden="true">
+                <a class="game__overlay" href="./game-cm.html" aria-label="카드 짝 맞추기 게임: 카드를 뒤집어 같은 그림을 맞춰보세요."></a>
+                <figure class="game__image"></figure>
+                <h1 class="game__title" lang="en">
+                    카드 짝 맞추기
+                </h1>
+                <p class="game__desc" lang="en">
+                    카드를 뒤집어 같은 그림을 맞춰보세요.<br/>
+                </p>
+            </article>
+
+            <article class="game__wrapper" id="memory-test" aria-hidden="true">
+                <a class="game__overlay" href="./game-mt.html" aria-label="기억력 테스트: 컴퓨터의 블록 선택 순서를 기억해서 똑같이 맞춰보세요."></a>
+                <figure class="game__image"></figure>
+                <h1 class="game__title" lang="en">
+                    기억력 테스트
+                </h1>
+                <p class="game__desc" lang="en">
+                    깜빡이는 블록을 기억해서 맞춰보세요.<br/>
+                </p>
+            </article>
+
+            <article class="game__wrapper" id="bulls-and-cows" aria-hidden="true">
+                <a class="game__overlay" href="./game-bac.html" aria-label="숫자 야구: 감춰진 4자리 숫자를 9회 안에 맞춰보세요."></a>
+                <figure class="game__image"></figure>
+                <h1 class="game__title" lang="en">
+                    숫자 야구
+                </h1>
+                <p class="game__desc" lang="en">
+                    숫자 야구 게임을 즐겨보세요!<br/>
+                </p>
+            </article>
+        </main>
+    </div>
+
+    <script src="./js/index.js"></script>
 </body>
 </html>
