@@ -120,7 +120,7 @@
     transition: background-image 250ms ease-in;
 }
 
-#rock-paper-scissors .game__image:after {
+#jyung .game__image:after {
     background-image: url('./../img/index/jyung.png');
 }
 
