@@ -149,7 +149,7 @@ function settingCardDeck() {
             </div>
         `;
 
-        cardFront[i].style.backgroundImage = `url('img/game-cm/card-pack/${cardDeck[i].card}.png')`;
+        cardFront[i].style.backgroundImage = `url('img/card-pack/${cardDeck[i].card}.png')`;
     }
 }
 
