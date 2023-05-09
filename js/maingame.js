@@ -98,7 +98,7 @@ function makeCardDeck() {
 
     for (let i = 0; i < BOARD_SIZE / 2; i++) {
         // 랜덤 값 뽑기
-        let randomNumber = getRandom(27, 0);
+        let randomNumber = getRandom(34, 0);
 
         // 중복 검사
         // cardDeckImgArr 안에 random 값이 없다면 cardDeckImgArr에 추가
