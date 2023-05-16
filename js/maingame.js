@@ -113,11 +113,10 @@ function makeCardDeck() {
       // mergedArray 배열을 랜덤하게 섞음
       const shuffledArray = shuffleArray(mergedArray);
       
-      const sortedArray = shuffledArray.slice(0, 14).sort((a, b) => CARD_IMG.indexOf(a) - CARD_IMG.indexOf(b));
 
     // 섞은 값으로 카드 세팅
     for (let i = 0; i < BOARD_SIZE; i++) {
-        cardDeck.push({card: CARD_IMG[sortedArray[i]], isOpen: false, isMatch: false});
+        cardDeck.push({card: CARD_IMG[shuffledArray[i]], isOpen: false, isMatch: false});
     }
 
     return cardDeck;
