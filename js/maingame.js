@@ -4,7 +4,7 @@ const CARD_IMG = ['1M', '2M', '3M', '4M', '5M', '6M', '7M', '8M', '9M',
                   '1T', '2T', '3T', '4T', '5T', '6T', '7T', '8T', '9T', 
                   '1S', '2S', '3S', '4S', '5S', '6S', '7S', '8S', '9S', 
                   'red', 'green', 'white', 'D', 'N', 'S', 'B'];
-const BOARD_SIZE = 24;
+const BOARD_SIZE = 14;
 
 let stage = 1; // 게임 스테이지
 let time = 60; // 남은 시간
