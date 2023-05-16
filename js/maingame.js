@@ -101,10 +101,11 @@ function makeCardDeck() {
         return array;
       }
 
+      const sourceArray = Array.from({ length: 34 }, (_, i) => i + 1);
       const copiedArrays = [];
       
       for (let i = 0; i < 4; i++) {
-        copiedArrays.push([...CARD_IMG]);
+        copiedArrays.push([...sourceArray]);
       }
       
       // copiedArrays 배열을 하나의 배열로 통합
