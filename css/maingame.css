@@ -5,7 +5,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #000;
+    background-color: #89cbdf;
 }
 
 .board {
@@ -15,7 +15,7 @@
     align-items: center;
     width: 90%;
     max-width: 646px;
-    height: 100%;
+    height: 70%;
 }
 
 .menu {
@@ -82,10 +82,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-height: 646px;
+    width: 240%;
+    max-height: 150px;
     border-radius: 5px;
-    background-color: #000;
+    background-color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
 }
 
@@ -100,14 +100,14 @@
     display: flex;
     flex-wrap: wrap;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 95%;
 }
 
 .card {
     position: relative;
-    width: 16.66666666666667%;
-    height: 25%;
+    width: 7%;
+    height: 90%;
 }
 
 .card__back,
