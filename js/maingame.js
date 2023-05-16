@@ -101,7 +101,7 @@ function makeCardDeck() {
         return array;
       }
 
-      const sourceArray = Array.from({ length: CARD_IMG }, (_, i) => i + 1);
+      const sourceArray = Array.from({ length: 34 }, (_, i) => i + 1);
       const copiedArrays = [];
       
       for (let i = 0; i < 4; i++) {
