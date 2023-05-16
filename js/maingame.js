@@ -119,7 +119,7 @@ function makeCardDeck() {
     for (let i = 0; i < BOARD_SIZE; i++) {
         cardDeck.push({card: CARD_IMG[shuffledArray[i]], isOpen: false, isMatch: false});
     }
-
+    cardDeck = cardDeck.slice(0, BOARD_SIZE).sort((a, b) => a - b);
     return cardDeck;
 }
 
