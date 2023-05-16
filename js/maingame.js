@@ -168,28 +168,6 @@ function showCardDeck() {
             }
         }, 200);
     });
-
-    showCardPromise.then(() => {
-        // showCardPromise 성공인 경우 실행할 코드
-        setTimeout(hideCardDeck, 2000);
-    })
-}
-
-// 전체 카드 숨기는 함수
-function hideCardDeck() {
-    for (let i = 0; i < cardDeck.length; i++) {
-        cardBack[i].style.transform = "rotateY(0deg)";
-        cardFront[i].style.transform = "rotateY(-180deg)";
-    }
-
-    // 전체 카드 숨기고 0.1초 뒤 isFlip = true, 게임 타이머 시작
-    // 바로 클릭이 가능하도록 할 때(isFlip = true 값을 바로 줬을 때) 에러가 나는 경우가 있어 0.1초 후 부터 카드 뒤집기가 가능하도록 설정
-    setTimeout(() => {
-        isFlip = true;
-
-        // 게임 타이머 시작
-        startTimer();
-    }, 100);
 }
 
 // 카드 클릭 이벤트
