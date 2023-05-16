@@ -93,32 +93,31 @@ function startTimer() {
 
 // 카드 덱 생성
 function makeCardDeck() {
-    // 이미지는 27개인데 필요한 카드는 12개로 고정되어 있기 때문에 27개의 이미지 중 랜덤으로 12개를 뽑도록 구현
-    let randomNumberArr = [];
-
-    for (let i = 0; i < BOARD_SIZE / 2; i++) {
-        // 랜덤 값 뽑기
-        let randomNumber = getRandom(34, 0);
-
-        // 중복 검사
-        // cardDeckImgArr 안에 random 값이 없다면 cardDeckImgArr에 추가
-        // cardDeckImgArr 안에 random 값이 있으면 인덱스 1 감소
-        if (randomNumberArr.indexOf(randomNumber) === -1) {
-            randomNumberArr.push(randomNumber);
-        } else {
-            i--;
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
         }
-    }
+        return array;
+      }
 
-    // 카드는 두 장씩 필요하므로 한 번 더 추가 (Spread operator와 push()를 이용)
-    randomNumberArr.push(...randomNumberArr);
-
-    // 카드 섞기
-    shuffle(randomNumberArr);
+      const copiedArrays = [];
+      
+      for (let i = 0; i < 4; i++) {
+        copiedArrays.push([...CARD_IMG]);
+      }
+      
+      // copiedArrays 배열을 하나의 배열로 통합
+      const mergedArray = copiedArrays.flat();
+      
+      // mergedArray 배열을 랜덤하게 섞음
+      const shuffledArray = shuffleArray(mergedArray);
+      
+      const sortedArray = shuffledArray.slice(0, 14).sort((a, b) => CARD_IMG.indexOf(a) - CARD_IMG.indexOf(b));
 
     // 섞은 값으로 카드 세팅
     for (let i = 0; i < BOARD_SIZE; i++) {
-        cardDeck.push({card: CARD_IMG[randomNumberArr[i]], isOpen: false, isMatch: false});
+        cardDeck.push({card: CARD_IMG[sortedArray[i]], isOpen: false, isMatch: false});
     }
 
     return cardDeck;
