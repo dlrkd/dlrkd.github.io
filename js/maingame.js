@@ -101,7 +101,7 @@ function makeCardDeck() {
         return array;
       }
 
-      const sourceArray = Array.from({ length: 34 }, (_, i) => i + 1);
+      const sourceArray = Array.from({ length: CARD_IMG }, (_, i) => i + 1);
       const copiedArrays = [];
       
       for (let i = 0; i < 4; i++) {
@@ -113,13 +113,13 @@ function makeCardDeck() {
       
       // mergedArray 배열을 랜덤하게 섞음
       const shuffledArray = shuffleArray(mergedArray);
-      
+      const cardDeckSub = [];
 
     // 섞은 값으로 카드 세팅
     for (let i = 0; i < BOARD_SIZE; i++) {
-        cardDeck.push({card: CARD_IMG[shuffledArray[i]], isOpen: false, isMatch: false});
+        cardDeckSub.push({card: CARD_IMG[shuffledArray[i]], isOpen: false, isMatch: false});
     }
-    cardDeck = cardDeck.slice(0, BOARD_SIZE).sort((a, b) => a - b);
+    cardDeck = cardDeckSub.slice(0, BOARD_SIZE).sort((a, b) => a - b);
     return cardDeck;
 }
 
