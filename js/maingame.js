@@ -101,7 +101,7 @@ function makeCardDeck() {
         return array;
       }
 
-      const sourceArray = Array.from({ length: 34 }, (_, i) => i + 1);
+      const sourceArray = Array.from({ length: 34 }, (_, i) => i);
       const copiedArrays = [];
       
       for (let i = 0; i < 4; i++) {
@@ -120,16 +120,6 @@ function makeCardDeck() {
     }
     
     return cardDeck;
-}
-
-// 카드 섞기
-function shuffle(array) {
-    array.sort(() => Math.random() - 0.5);
-}
-
-// 난수 생성
-function getRandom(max, min) {
-    return parseInt(Math.random() * (max - min)) + min;
 }
 
 // 카드 화면에 세팅
