@@ -94,30 +94,7 @@ function startTimer() {
 
 // 카드 덱 생성
 function makeCardDeck() {
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-      }
-
-      const sourceArray = Array.from({ length: 34 }, (_, i) => i);
-      const copiedArrays = [];
-      
-      for (let i = 0; i < 4; i++) {
-        copiedArrays.push([...sourceArray]);
-      }
-      
-      // copiedArrays 배열을 하나의 배열로 통합
-      const mergedArray = copiedArrays.flat();
-      
-      // mergedArray 배열을 랜덤하게 섞음
-      const shuffledArray = shuffleArray(mergedArray);
-
-      const sortedArray = shuffledArray.slice(0, BOARD_SIZE).sort((a, b) => a - b);
-
-      const remainingArray = shuffledArray.slice(count, shuffledArray.length);
+    
 
     // 섞은 값으로 카드 세팅
     for (let i = 0; i < BOARD_SIZE; i++) {
@@ -163,6 +140,31 @@ function showCardDeck() {
         }, 200);
     });
 }
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  const sourceArray = Array.from({ length: 34 }, (_, i) => i);
+  const copiedArrays = [];
+  
+  for (let i = 0; i < 4; i++) {
+    copiedArrays.push([...sourceArray]);
+  }
+  
+  // copiedArrays 배열을 하나의 배열로 통합
+  const mergedArray = copiedArrays.flat();
+  
+  // mergedArray 배열을 랜덤하게 섞음
+  const shuffledArray = shuffleArray(mergedArray);
+
+  const sortedArray = shuffledArray.slice(0, BOARD_SIZE).sort((a, b) => a - b);
+
+  const remainingArray = shuffledArray.slice(count, shuffledArray.length);
 
 sortedArray.forEach(function(number) {
   var listItem = document.createElement('li');
