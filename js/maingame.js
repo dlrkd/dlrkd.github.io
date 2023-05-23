@@ -12,6 +12,7 @@ let timer = 0;
 let isFlip = false; // 카드 뒤집기 가능 여부
 
 let cardDeck = [];
+let clickedNumbers = [];
 
 // 게임 시작
 function startGame() {
@@ -116,6 +117,8 @@ function makeCardDeck() {
 
       const sortedArray = shuffledArray.slice(0, BOARD_SIZE).sort((a, b) => a - b);
 
+      const remainingArray = shuffledArray.slice(count, shuffledArray.length);
+
     // 섞은 값으로 카드 세팅
     for (let i = 0; i < BOARD_SIZE; i++) {
         cardDeck.push({card: CARD_IMG[sortedArray[i]], isOpen: false, isMatch: false});
@@ -161,20 +164,47 @@ function showCardDeck() {
     });
 }
 
-// 카드 클릭 이벤트
-gameBoard.addEventListener("click", function(e) {
-    if (isFlip === false) {
-        return;
-    }
-
-    if (e.target.parentNode.className === "card") {
-        let clickCardId = e.target.parentNode.dataset.id;
-
-        if (cardDeck[clickCardId].isOpen === false) {
-            openCard(clickCardId);
-        }
-    }
+sortedArray.forEach(function(number) {
+  var listItem = document.createElement('li');
+  listItem.textContent = number;
+  gameBoard.appendChild(listItem);
 });
+
+// 클릭 이벤트 리스너 추가
+gameBoard.addEventListener('click', function(event) {
+  var clickedElement = event.target;
+
+  if (clickedElement.tagName === 'LI') {
+    var clickedNumber = parseInt(clickedElement.textContent);
+    handleClick(clickedNumber);
+  }
+});
+
+// 클릭한 숫자를 처리하는 함수
+function handleClick(clickedNumber) {
+  var index = sortedArray.indexOf(clickedNumber);
+
+  if (index !== -1) {
+    sortedArray.splice(index, 1);
+    clickedNumbers.push(clickedNumber);
+
+    var targetElement = document.getElementById('target');
+    var listItem = document.createElement('li');
+    listItem.textContent = clickedNumber;
+    targetElement.appendChild(listItem);
+
+    if (remainingArray.length > 0) {
+      var nextNumber = remainingArray.shift();
+      sortedArray.splice(index, 0, nextNumber);
+      var nextListItem = document.createElement('li');
+      nextListItem.textContent = nextNumber;
+      gameBoard.replaceChild(nextListItem, gameBoard.children[index]);
+    } else {
+        gameBoard.removeChild(gameBoard.children[index]);
+    }
+  }
+}
+
 
 // 카드 오픈
 function openCard(id) {
