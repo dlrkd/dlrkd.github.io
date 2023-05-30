@@ -8,6 +8,36 @@
     background-color: #89cbdf;
 }
 
+.board_floor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 646px;
+    height: 40%;
+}
+
+.game_floor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 240%;
+    max-height: 150px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+
+.game_board_floor {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    left: 0;
+    width: 95%;
+    height: 95%;
+}
+
 .board {
     display: flex;
     flex-direction: column;
@@ -118,7 +148,6 @@
     border: 2px solid #000;
     border-radius: 5px;
     background-clip: content-box;
-    background-color: #FFF;
     background-repeat: no-repeat;
     background-position: center center;
     backface-visibility: hidden;
@@ -126,13 +155,14 @@
 }
 
 .card__front {
+    background-color: #ffffff;
     transform: rotateY(-180deg);
     background-size: 80% auto;
 }
 
 .card__back {
+    background-color: #ffe17d;
     transform: rotateY(0deg);
-    background-image: url('../img/game-cm/pawprint.png');
     background-size: 50% auto;
 }
 

@@ -13,6 +13,11 @@ let isFlip = false; // 카드 뒤집기 가능 여부
 
 let cardDeck = [];
 
+let count = 0;
+let shuffledArray = [];
+let remainingArray = [];
+let clickedNumbers = [];
+
 // 게임 시작
 function startGame() {
     // 카드 덱 생성
@@ -23,6 +28,7 @@ function startGame() {
 
     // 최초 1회 전체 카드 보여줌
     showCardDeck();
+
 }
 
 // 게임 재시작
@@ -48,6 +54,7 @@ function initGame() {
 // 게임 화면 초기화
 function initScreen() {
     gameBoard.innerHTML = '';
+    gameBoardFloor.innerHTML = '';
     playerTime.innerHTML = time;
     playerStage.innerHTML = stage;
     playerTime.classList.remove("blink");
@@ -111,14 +118,15 @@ function makeCardDeck() {
       // copiedArrays 배열을 하나의 배열로 통합
       const mergedArray = copiedArrays.flat();
       
-      // mergedArray 배열을 랜덤하게 섞음
-      const shuffledArray = shuffleArray(mergedArray);
+      count = mergedArray - BOARD_SIZE;
 
-      const sortedArray = shuffledArray.slice(0, BOARD_SIZE).sort((a, b) => a - b);
+      // mergedArray 배열을 랜덤하게 섞음
+      shuffledArray = shuffleArray(mergedArray);
+      remainingArray = shuffledArray.slice(count, shuffledArray.length);
 
     // 섞은 값으로 카드 세팅
-    for (let i = 0; i < BOARD_SIZE; i++) {
-        cardDeck.push({card: CARD_IMG[sortedArray[i]], isOpen: false, isMatch: false});
+    for (let i = 0; i < shuffledArray.length; i++) {
+        cardDeck.push({card: CARD_IMG[shuffledArray[i]], isOpen: false, isMatch: false});
     }
     
     return cardDeck;
@@ -128,18 +136,34 @@ function makeCardDeck() {
 const gameBoard = document.getElementsByClassName("game__board")[0];
 const cardBack = document.getElementsByClassName("card__back");
 const cardFront = document.getElementsByClassName("card__front");
+const gameBoardFloor = document.getElementsByClassName("game_board_floor")[0];
 
 function settingCardDeck() {
     for (let i = 0; i < BOARD_SIZE; i++) {
         gameBoard.innerHTML = gameBoard.innerHTML +
         `
-            <div class="card" data-id="${i}" data-card="${cardDeck[i].card}">
+            <div class="card" data-id="${i}" data-card="${cardDeck[i].card}" data-num="${shuffledArray[i]}">
                 <div class="card__back"></div>
                 <div class="card__front"></div>
             </div>
         `;
 
         cardFront[i].style.backgroundImage = `url('img/card-pack/${cardDeck[i].card}.png')`;
+    }
+}
+
+function settingFloorCard(id) {
+    if (id !== -1){
+        gameBoardFloor.innerHTML = gameBoardFloor.innerHTML +
+        `
+            <div class="card" data-id="${id}" data-card="${cardDeck[id].card}" data-num="${id}">
+                <div class="card__back"></div>
+                <div class="card__front"></div>
+            </div>
+        `;
+
+        cardFront[id].style.backgroundImage = `url('img/card-pack/${cardDeck[id].card}.png')`;
+        
     }
 }
 
@@ -157,22 +181,19 @@ function showCardDeck() {
 
                 resolve();
             }
-        }, 200);
+        }, );
     });
 }
 
+
 // 카드 클릭 이벤트
 gameBoard.addEventListener("click", function(e) {
-    if (isFlip === false) {
-        return;
-    }
 
     if (e.target.parentNode.className === "card") {
-        let clickCardId = e.target.parentNode.dataset.id;
+        let clickCardId = e.target.parentNode.dataset.num;
 
-        if (cardDeck[clickCardId].isOpen === false) {
-            openCard(clickCardId);
-        }
+        clickedNumbers.push(clickCardId);
+        settingFloorCard(clickCardId);
     }
 });
 
